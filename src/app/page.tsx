@@ -46,7 +46,7 @@ export default function Home() {
         success: response.ok,
         message: response.ok ? 'Notificação enviada com sucesso!' : data.error || 'Erro ao enviar notificação',
       })
-    } catch (error) {
+    } catch (_error) {
       setResult({
         success: false,
         message: 'Erro ao conectar com o servidor',
