@@ -14,7 +14,7 @@ export default function Home() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
     // In production, you should use an environment variable: process.env.NEXT_PUBLIC_ACCESS_PASSWORD
-    const correctPassword = 'futurostech2024' // Temporary hardcoded password
+    const correctPassword = 'prj_8Pqx1JTxndc6MnYuV6cqEMHIJapm' // Temporary hardcoded password
     if (password === correctPassword) {
       setIsAuthenticated(true)
       setAuthError('')
