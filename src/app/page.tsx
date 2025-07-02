@@ -13,8 +13,7 @@ export default function Home() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
-    // In production, you should use an environment variable: process.env.NEXT_PUBLIC_ACCESS_PASSWORD
-    const correctPassword = 'prj_8Pqx1JTxndc6MnYuV6cqEMHIJapm' // Temporary hardcoded password
+    const correctPassword = 'prj_8Pqx1JTxndc6MnYuV6cqEMHIJapm'
     if (password === correctPassword) {
       setIsAuthenticated(true)
       setAuthError('')
@@ -58,81 +57,143 @@ export default function Home() {
 
   if (!isAuthenticated) {
     return (
-      <main className="min-h-screen p-4 bg-black text-green-500 font-mono">
-        <div className="max-w-md mx-auto pt-20">
-          <h1 className="text-2xl font-normal mb-4 border-b border-green-800 pb-2">Access Control</h1>
+      <div style={{
+        backgroundColor: 'black',
+        color: 'white',
+        fontFamily: 'monospace',
+        minHeight: '100vh',
+        padding: '1rem'
+      }}>
+        <div style={{ maxWidth: '400px', margin: '80px auto 0' }}>
+          <h1 style={{ 
+            fontSize: '1.5rem', 
+            marginBottom: '1rem',
+            paddingBottom: '0.5rem',
+            borderBottom: '1px solid white'
+          }}>
+            Access Control
+          </h1>
           
-          <form onSubmit={handleLogin} className="space-y-4">
+          <form onSubmit={handleLogin} style={{ marginTop: '1rem' }}>
             <div>
-              <label htmlFor="password" className="block text-sm mb-1">
-                {'>'}Password_
+              <label htmlFor="password" style={{ display: 'block', marginBottom: '0.5rem' }}>
+                {'>'} Password_
               </label>
               <input
                 type="password"
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full p-2 border border-green-800 bg-black text-green-500 font-mono text-sm focus:border-green-500 focus:outline-none"
+                style={{
+                  width: '100%',
+                  padding: '0.5rem',
+                  backgroundColor: 'black',
+                  color: 'white',
+                  border: '1px solid white',
+                  fontFamily: 'monospace',
+                  marginBottom: '1rem'
+                }}
                 required
               />
             </div>
 
             {authError && (
-              <div className="text-red-500 text-sm">
+              <div style={{ color: 'white', marginBottom: '1rem' }}>
                 {'>'} {authError}
               </div>
             )}
 
             <button
               type="submit"
-              className="w-full p-2 bg-green-900 text-green-500 font-mono text-sm hover:bg-green-800 border border-green-800"
+              style={{
+                width: '100%',
+                padding: '0.5rem',
+                backgroundColor: 'black',
+                color: 'white',
+                border: '1px solid white',
+                fontFamily: 'monospace',
+                cursor: 'pointer'
+              }}
             >
-              {'>'}Login_
+              {'>'} Login_
             </button>
           </form>
         </div>
-      </main>
+      </div>
     )
   }
 
   return (
-    <main className="min-h-screen p-4 bg-black text-green-500 font-mono">
-      <div className="max-w-2xl mx-auto">
-        <div className="flex justify-between items-center mb-4 border-b border-green-800 pb-2">
-          <h1 className="text-2xl font-normal">Notificação System</h1>
+    <div style={{
+      backgroundColor: 'black',
+      color: 'white',
+      fontFamily: 'monospace',
+      minHeight: '100vh',
+      padding: '1rem'
+    }}>
+      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          alignItems: 'center',
+          borderBottom: '1px solid white',
+          marginBottom: '1rem',
+          paddingBottom: '0.5rem'
+        }}>
+          <h1 style={{ fontSize: '1.5rem' }}>Notificação System</h1>
           <button
             onClick={() => setIsAuthenticated(false)}
-            className="text-sm hover:text-green-400"
+            style={{
+              backgroundColor: 'transparent',
+              border: 'none',
+              color: 'white',
+              fontFamily: 'monospace',
+              cursor: 'pointer'
+            }}
           >
-            {'>'}Logout
+            {'>'} Logout
           </button>
         </div>
         
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label htmlFor="title" className="block text-sm mb-1">
-              {'>'}Título_
+        <form onSubmit={handleSubmit}>
+          <div style={{ marginBottom: '1rem' }}>
+            <label htmlFor="title" style={{ display: 'block', marginBottom: '0.5rem' }}>
+              {'>'} Título_
             </label>
             <input
               type="text"
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full p-2 border border-green-800 bg-black text-green-500 font-mono text-sm focus:border-green-500 focus:outline-none"
+              style={{
+                width: '100%',
+                padding: '0.5rem',
+                backgroundColor: 'black',
+                color: 'white',
+                border: '1px solid white',
+                fontFamily: 'monospace'
+              }}
               required
             />
           </div>
 
-          <div>
-            <label htmlFor="message" className="block text-sm mb-1">
-              {'>'}Mensagem_
+          <div style={{ marginBottom: '1rem' }}>
+            <label htmlFor="message" style={{ display: 'block', marginBottom: '0.5rem' }}>
+              {'>'} Mensagem_
             </label>
             <textarea
               id="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               rows={4}
-              className="w-full p-2 border border-green-800 bg-black text-green-500 font-mono text-sm focus:border-green-500 focus:outline-none"
+              style={{
+                width: '100%',
+                padding: '0.5rem',
+                backgroundColor: 'black',
+                color: 'white',
+                border: '1px solid white',
+                fontFamily: 'monospace'
+              }}
               required
             />
           </div>
@@ -140,18 +201,32 @@ export default function Home() {
           <button
             type="submit"
             disabled={sending}
-            className="w-full p-2 bg-green-900 text-green-500 font-mono text-sm hover:bg-green-800 disabled:bg-green-950 border border-green-800"
+            style={{
+              width: '100%',
+              padding: '0.5rem',
+              backgroundColor: sending ? '#333' : 'black',
+              color: 'white',
+              border: '1px solid white',
+              fontFamily: 'monospace',
+              cursor: sending ? 'not-allowed' : 'pointer'
+            }}
           >
-            {sending ? '>Processando...' : '>Enviar_Notificação'}
+            {sending ? '> Processando...' : '> Enviar_Notificação'}
           </button>
         </form>
 
         {result && (
-          <div className={`mt-4 p-2 border ${result.success ? 'border-green-500 bg-green-900/20' : 'border-red-500 bg-red-900/20'} font-mono text-sm ${result.success ? 'text-green-500' : 'text-red-500'}`}>
+          <div style={{
+            marginTop: '1rem',
+            padding: '0.5rem',
+            border: '1px solid white',
+            backgroundColor: 'black',
+            color: 'white'
+          }}>
             {'>'} {result.message}
           </div>
         )}
       </div>
-    </main>
+    </div>
   )
 }
